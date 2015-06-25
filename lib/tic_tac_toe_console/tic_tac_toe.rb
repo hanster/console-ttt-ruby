@@ -1,8 +1,8 @@
 require 'tic_tac_toe_core/game_setup'
-require 'tictactoe-ui/ui/console_ui'
+require 'tic_tac_toe_console/ui/console_ui'
 
-module ConsoleTTT
-  class TTT
+module TicTacToeConsole
+  class TicTacToe
     def initialize(ui, game_setup)
       @ui = ui
       @game_setup = game_setup

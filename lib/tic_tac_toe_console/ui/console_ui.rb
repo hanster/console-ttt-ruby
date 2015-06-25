@@ -1,10 +1,10 @@
 require 'tic_tac_toe_core/board'
-require 'tictactoe-ui/ui/input_move'
-require 'tictactoe-ui/ui/input_board'
-require 'tictactoe-ui/ui/input_new_game'
-require 'tictactoe-ui/ui/input_game_type'
+require 'tic_tac_toe_console/ui/input_move'
+require 'tic_tac_toe_console/ui/input_board'
+require 'tic_tac_toe_console/ui/input_new_game'
+require 'tic_tac_toe_console/ui/input_game_type'
 
-module ConsoleTTT
+module TicTacToeConsole
   module Ui
     class ConsoleUi
       GOODBYE_MESSAGE = "Goodbye and Thanks for playing!"

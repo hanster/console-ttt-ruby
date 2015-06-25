@@ -1,4 +1,4 @@
-module ConsoleTTT
+module TicTacToeConsole
   module Fakes
     class Game
       def run

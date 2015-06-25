@@ -1,4 +1,4 @@
-module ConsoleTTT
+module TicTacToeConsole
   module Ui
     class InputMove
       ENTER_MOVE_PROMPT = "Player %s, Please enter your next move: "

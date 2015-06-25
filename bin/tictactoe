@@ -3,10 +3,10 @@ $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 
 require 'tic_tac_toe_core/game_setup'
 require 'tic_tac_toe_core/ai/minimax_ai'
-require 'tictactoe-ui/ttt'
+require 'tic_tac_toe_console/tic_tac_toe'
 
-ui = ConsoleTTT::Ui::ConsoleUi.new
+ui = TicTacToeConsole::Ui::ConsoleUi.new
 ai = TicTacToeCore::Ai::MinimaxAi.new
 game_setup = TicTacToeCore::GameSetup.new(ui, ai)
 
-ConsoleTTT::TTT.new(ui, game_setup).run
+TicTacToeConsole::TicTacToe.new(ui, game_setup).run

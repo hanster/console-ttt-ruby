@@ -1,4 +1,4 @@
-module ConsoleTTT
+module TicTacToeConsole
   module Ui
     class InputBoard
       BOARD_TYPE_PROMPT = "Enter board type: "

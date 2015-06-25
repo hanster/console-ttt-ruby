@@ -1,4 +1,4 @@
-module ConsoleTTT
+module TicTacToeConsole
   module Ui
     class InputNewGame
       PLAY_AGAIN_PROMPT = "Do you want to play again?"

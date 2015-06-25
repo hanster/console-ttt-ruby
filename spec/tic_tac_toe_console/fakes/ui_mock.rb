@@ -1,4 +1,4 @@
-module ConsoleTTT
+module TicTacToeConsole
   module Fakes
     class UiMock
       attr_reader :draw_board_times_called,

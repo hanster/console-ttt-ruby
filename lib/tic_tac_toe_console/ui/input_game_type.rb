@@ -1,4 +1,4 @@
-module ConsoleTTT
+module TicTacToeConsole
   module Ui
     class InputGameType
       ENTER_GAME_TYPE_PROMPT = "Enter the game type: "

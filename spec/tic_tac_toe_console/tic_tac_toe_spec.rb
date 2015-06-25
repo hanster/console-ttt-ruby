@@ -1,15 +1,15 @@
 require 'spec_helper'
-require 'tictactoe-ui/fakes/ui_mock'
-require 'tictactoe-ui/ttt'
-require 'tictactoe-ui/fakes/game'
+require 'tic_tac_toe_console/fakes/ui_mock'
+require 'tic_tac_toe_console/tic_tac_toe'
+require 'tic_tac_toe_console/fakes/game'
 
-module ConsoleTTT
-  describe TTT do
+module TicTacToeConsole
+  describe TicTacToe do
     let(:ui) { Fakes::UiMock.new}
     let(:game_setup) { Fakes::GameSetupFake.new }
     
     it "plays through one game" do
-      ttt = TTT.new(ui, game_setup)
+      ttt = TicTacToe.new(ui, game_setup)
       ttt.run
       
       expect(game_setup.choose_game_type_times_called).to eq(1)
@@ -17,7 +17,7 @@ module ConsoleTTT
 
     it "loop while prompt_play_again? is true" do
       ui.play_again_answers = [true, false]
-      ttt = TTT.new(ui, game_setup)
+      ttt = TicTacToe.new(ui, game_setup)
       ttt.run
       
       expect(game_setup.choose_game_type_times_called).to eq(2)
@@ -25,7 +25,7 @@ module ConsoleTTT
     end
 
     it "says goodbye at the end" do
-      ttt = TTT.new(ui, game_setup)
+      ttt = TicTacToe.new(ui, game_setup)
       ttt.run
       expect(ui.prompt_good_bye_times_called).to eq(1)
     end

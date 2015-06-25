@@ -1,10 +1,10 @@
 require 'spec_helper'
-require 'tictactoe-ui/ui/console_ui'
-require 'tictactoe-ui/board_helper'
+require 'tic_tac_toe_console/ui/console_ui'
+require 'tic_tac_toe_console/board_helper'
 require 'tic_tac_toe_core/board'
 require 'tic_tac_toe_core/marker'
 
-module ConsoleTTT
+module TicTacToeConsole
   module Ui
     describe ConsoleUi do
       let(:output) { StringIO.new }

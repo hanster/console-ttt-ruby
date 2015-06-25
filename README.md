@@ -23,5 +23,5 @@ To run just slow tests.
 To run the actual game, execute the following command:
 
 ```Shell
-bundle exec bin/tictactoe
+bundle exec bin/tic_tac_toe_console
 ```

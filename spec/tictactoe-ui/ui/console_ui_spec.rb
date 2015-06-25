@@ -1,14 +1,14 @@
 require 'spec_helper'
 require 'tictactoe-ui/ui/console_ui'
-require 'tictactoe/board'
-require 'tictactoe/marker'
 require 'tictactoe-ui/board_helper'
+require 'tic_tac_toe_core/board'
+require 'tic_tac_toe_core/marker'
 
 module ConsoleTTT
   module Ui
     describe ConsoleUi do
       let(:output) { StringIO.new }
-      let(:marker) { TicTacToe::Marker::X_MARKER }
+      let(:marker) { TicTacToeCore::Marker::X_MARKER }
 
       it "displays a given message to console" do
         input = StringIO.new
@@ -26,7 +26,7 @@ module ConsoleTTT
       end
 
       it "draws the board" do
-        board = TicTacToe::Board.make_board(3)
+        board = TicTacToeCore::Board.make_board(3)
         input = StringIO.new
         ui = ConsoleUi.new(input, output)
         ui.draw_board(board)
@@ -38,7 +38,7 @@ module ConsoleTTT
       end
 
       it "draws the board" do
-        board = TicTacToe::Board.make_board(4)
+        board = TicTacToeCore::Board.make_board(4)
         input = StringIO.new
         ui = ConsoleUi.new(input, output)
         ui.draw_board(board)
@@ -104,15 +104,15 @@ module ConsoleTTT
       it "displays the end game message when there is a winner" do
         input = StringIO.new
         ui = ConsoleUi.new(input, output)
-        ui.display_end_game_message(TicTacToe::Board::X_MARKER)
+        ui.display_end_game_message(TicTacToeCore::Board::X_MARKER)
 
-        expect(output.string).to include("Game Over\n\n" + TicTacToe::Board::X_MARKER + " wins!")
+        expect(output.string).to include("Game Over\n\n" + TicTacToeCore::Board::X_MARKER + " wins!")
       end
 
       it "displays the end game message for a draw" do
         input = StringIO.new
         ui = ConsoleUi.new(input, output)
-        ui.display_end_game_message(TicTacToe::Board::DRAW)
+        ui.display_end_game_message(TicTacToeCore::Board::DRAW)
 
         expect(output.string).to include("Game Over\n\n" + ConsoleUi::DRAW_MESSAGE)
       end

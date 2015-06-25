@@ -1,12 +1,12 @@
 #!/usr/bin/env ruby -w
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 
-require 'tictactoe/game_setup'
+require 'tic_tac_toe_core/game_setup'
+require 'tic_tac_toe_core/ai/minimax_ai'
 require 'tictactoe-ui/ttt'
-require 'tictactoe/ai/minimax_ai'
 
 ui = ConsoleTTT::Ui::ConsoleUi.new
-ai = TicTacToe::Ai::MinimaxAi.new
-game_setup = TicTacToe::GameSetup.new(ui, ai)
+ai = TicTacToeCore::Ai::MinimaxAi.new
+game_setup = TicTacToeCore::GameSetup.new(ui, ai)
 
 ConsoleTTT::TTT.new(ui, game_setup).run

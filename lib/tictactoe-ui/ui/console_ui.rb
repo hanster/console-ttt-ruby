@@ -1,4 +1,4 @@
-require 'tictactoe/board'
+require 'tic_tac_toe_core/board'
 require 'tictactoe-ui/ui/input_move'
 require 'tictactoe-ui/ui/input_board'
 require 'tictactoe-ui/ui/input_new_game'
@@ -29,7 +29,7 @@ module ConsoleTTT
       end
 
       def display_end_game_message(end_game_state)
-        if end_game_state == TicTacToe::Board::DRAW
+        if end_game_state == TicTacToeCore::Board::DRAW
           message = DRAW_MESSAGE
         else
           message = WINNER_MESSAGE % end_game_state
@@ -53,6 +53,14 @@ module ConsoleTTT
 
       def prompt_good_bye
         display_message(GOODBYE_MESSAGE)
+      end
+
+      def prompt_for_input(inputter)
+        inputter.prompt_message
+        inputter.parse_input
+        if inputter.valid?
+          return inputter.value
+        end
       end
 
       # how do I extract this duplication?

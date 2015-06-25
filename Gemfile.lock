@@ -1,8 +1,8 @@
 GIT
-  remote: https://github.com/hanster/core-ttt-ruby.git
-  revision: 6becdb91871b5980ae7be508341c1e58928a2084
+  remote: https://github.com/hanster/tic-tac-toe-core.git
+  revision: 7f1654473748f18bd24e39bf9c5ebaf5efbc9320
   specs:
-    tictactoe (0.1.0)
+    tic_tac_toe_core (0.1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -37,4 +37,4 @@ DEPENDENCIES
   rake
   rspec
   simplecov
-  tictactoe!
+  tic_tac_toe_core!

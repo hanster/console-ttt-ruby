@@ -1,4 +1,4 @@
-require 'tictactoe/game_setup'
+require 'tic_tac_toe_core/game_setup'
 require 'tictactoe-ui/ui/console_ui'
 
 module ConsoleTTT

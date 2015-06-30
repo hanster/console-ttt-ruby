@@ -3,10 +3,11 @@ module TicTacToeConsole
     class InputGameType
       ENTER_GAME_TYPE_PROMPT = "Enter the game type: "
       INVALID_GAME_TYPE_PROMPT = "Invalid game type."
-      attr_reader :value
+      attr_reader :value, :options
 
-      def initialize(input)
+      def initialize(input, options)
         @input = input
+        @options = options
       end
 
       def parse_input
@@ -14,7 +15,7 @@ module TicTacToeConsole
       end
 
       def prompt_message
-        ENTER_GAME_TYPE_PROMPT
+        options + "\n" + ENTER_GAME_TYPE_PROMPT
       end
 
       def invalid_message

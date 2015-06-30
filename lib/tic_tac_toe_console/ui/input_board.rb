@@ -4,10 +4,11 @@ module TicTacToeConsole
       BOARD_TYPE_PROMPT = "Enter board type: "
       INVALID_BOARD_TYPE_PROMPT = "Invalid board type."
       VALID_BOARD_INPUTS = [1, 2, 3]
-      attr_reader :value
+      attr_reader :value, :options
 
-      def initialize(input)
+      def initialize(input, options)
         @input = input
+        @options = options
       end
 
       def parse_input
@@ -15,7 +16,7 @@ module TicTacToeConsole
       end
 
       def prompt_message
-        BOARD_TYPE_PROMPT
+        options + "\n" + BOARD_TYPE_PROMPT
       end
 
       def invalid_message 

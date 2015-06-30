@@ -4,18 +4,19 @@ module TicTacToeConsole
       ENTER_MOVE_PROMPT = "Player %s, Please enter your next move: "
       CANNOT_MAKE_MOVE_PROMPT = "Cannot make that move, try again."
       INDEX_OFFSET = 1
-      attr_reader :value
+      attr_reader :value, :board
 
-      def initialize(input, marker)
+      def initialize(input, marker, board)
         @input = input
         @marker = marker
+        @board = board
       end
 
       def parse_input
         @value = convert_input_to_move(@input.gets)
       end
 
-      def valid?(board)
+      def valid?
         @value && board.move_available?(@value)
       end
 

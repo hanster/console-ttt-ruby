@@ -23,6 +23,10 @@ module TicTacToeConsole
         INVALID_PLAY_AGAIN_PROMPT
       end
 
+      def value
+        @value == YES_INPUT
+      end
+
       def valid?
         @value == YES_INPUT || @value == NO_INPUT
       end

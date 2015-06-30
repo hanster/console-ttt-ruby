@@ -56,54 +56,28 @@ module TicTacToeConsole
       end
 
       def prompt_for_input(inputter)
-        inputter.prompt_message
-        inputter.parse_input
-        if inputter.valid?
-          return inputter.value
+        loop do
+          display_message(inputter.prompt_message)
+          inputter.parse_input
+          return inputter.value if inputter.valid?
+          display_message(inputter.invalid_message)
         end
       end
 
-      # how do I extract this duplication?
       def prompt_for_move(board, marker)
-        input_move = InputMove.new(@input, marker)
-        loop do
-          display_message(input_move.prompt_message)
-          input_move.parse_input
-          return input_move.value if input_move.valid?(board)
-          display_message(input_move.invalid_message)
-        end
+        prompt_for_input(InputMove.new(@input, marker, board))
       end
 
       def prompt_board_type(options)
-        input_board = InputBoard.new(@input)
-        loop do
-          display_message(options)
-          display_message(input_board.prompt_message)
-          input_board.parse_input
-          return input_board.value if input_board.valid?
-          display_message(input_board.invalid_message)
-        end
+        prompt_for_input(InputBoard.new(@input, options))
       end
 
       def prompt_game_type(options)
-        input_game_type = InputGameType.new(@input)
-        loop do
-          display_message(options)
-          display_message(input_game_type.prompt_message)
-          input_game_type.parse_input
-          return input_game_type.value if input_game_type.valid?
-          display_message(input_game_type.invalid_message)
-        end
+        prompt_for_input(InputGameType.new(@input, options))
       end
 
       def prompt_play_again?
-        input_new_game = InputNewGame.new(@input)
-        loop do
-          display_message(input_new_game.prompt_message)
-          input_new_game.parse_input
-          return input_new_game.value == InputNewGame::YES_INPUT if input_new_game.valid?
-          display_message(input_new_game.invalid_message)
-        end
+        prompt_for_input(InputNewGame.new(@input))
       end
 
       private

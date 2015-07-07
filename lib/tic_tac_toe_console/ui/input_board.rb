@@ -1,9 +1,10 @@
 module TicTacToeConsole
   module Ui
     class InputBoard
+      BOARD_TYPES_PROMPT = "Board Types: \n\n"
       BOARD_TYPE_PROMPT = "Enter board type: "
       INVALID_BOARD_TYPE_PROMPT = "Invalid board type."
-      VALID_BOARD_INPUTS = [1, 2, 3]
+      VALID_BOARD_INPUTS = [3, 4]
       attr_reader :value, :options
 
       def initialize(input, options)
@@ -16,7 +17,11 @@ module TicTacToeConsole
       end
 
       def prompt_message
-        options + "\n" + BOARD_TYPE_PROMPT
+        message = BOARD_TYPES_PROMPT
+        options.each do |key, value|
+          message += key.to_s + " - " + value + "\n"
+        end
+        message + "\n" + BOARD_TYPE_PROMPT
       end
 
       def invalid_message 
@@ -24,13 +29,13 @@ module TicTacToeConsole
       end
 
       def valid?
-        VALID_BOARD_INPUTS.include?(@value)
+        options.has_key?(@value)
       end
 
       private 
 
       def convert_input_to_board_type(value)
-        value[/^[1-3]$/] && value.to_i
+        value[/^[3-4]$/] && value.to_i
       end
     end
   end

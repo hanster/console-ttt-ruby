@@ -10,7 +10,7 @@ module TicTacToeConsole
 
     def run
       loop do
-        game = @game_setup.choose_game_type
+        game = @game_setup.build_game
         game.run
         break unless @ui.prompt_play_again?
       end

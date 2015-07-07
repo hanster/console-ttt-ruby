@@ -40,7 +40,7 @@ module TicTacToeConsole
         @games_to_play = 1
       end
 
-      def choose_game_type
+      def build_game
         @choose_game_type_times_called += 1
         Fakes::Game.new
       end

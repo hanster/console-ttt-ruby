@@ -2,20 +2,12 @@ require 'spec_helper'
 require 'tic_tac_toe_console/ui/console_ui'
 require 'tic_tac_toe_console/board_helper'
 require 'tic_tac_toe_core/board'
-require 'tic_tac_toe_core/marker'
 
 module TicTacToeConsole
   module Ui
     describe ConsoleUi do
       let(:output) { StringIO.new }
-      let(:marker) { TicTacToeCore::Marker::X_MARKER }
-
-      it "displays a given message to console" do
-        input = StringIO.new
-        ui = ConsoleUi.new(input, output)
-        ui.display_message("test message")
-        expect(output.string).to start_with("test message")
-      end
+      let(:marker) { 'X' }
 
       it "keeps asking for the user to enter a move until it chooses a valid move" do
         input = StringIO.new("a\n1\n8\n")
@@ -26,7 +18,7 @@ module TicTacToeConsole
       end
 
       it "draws the board" do
-        board = TicTacToeCore::Board.make_board(3)
+        board = TicTacToeCore::Board.create_empty(3)
         input = StringIO.new
         ui = ConsoleUi.new(input, output)
         ui.draw_board(board)
@@ -38,7 +30,7 @@ module TicTacToeConsole
       end
 
       it "draws the board" do
-        board = TicTacToeCore::Board.make_board(4)
+        board = TicTacToeCore::Board.create_empty(4)
         input = StringIO.new
         ui = ConsoleUi.new(input, output)
         ui.draw_board(board)
@@ -52,27 +44,20 @@ module TicTacToeConsole
           " 13  | 14  | 15  | 16  \n")
       end
 
-      it "clears the screen" do
-        input = StringIO.new
-        ui = ConsoleUi.new(input, output)
-        ui.clear_screen
-        expect(output.string).to include("\u001b[2J" + "\u001b[H")
-      end
-
-      it "prompts for the game type until a valid input is entered" do
+      it "prompts for the players type until a valid input is entered" do
         input = StringIO.new("a\n5\n2\n")
         ui = ConsoleUi.new(input, output)
 
-        expect(ui.prompt_game_type("options")).to be(2)
+        expect(ui.get_players_type).to be(2)
         expect(output.string).to include("Enter the game type: ")
         expect(output.string).to include("Invalid game type.")
       end
 
       it "prompts for the board type until a valid input is entered" do
-        input = StringIO.new("a\n5\n1\n")
+        input = StringIO.new("a\n5\n3\n")
         ui = ConsoleUi.new(input, output)
 
-        expect(ui.prompt_board_type('options')).to be(1)
+        expect(ui.get_board_type).to be(3)
         expect(output.string).to include("Enter board type: ")
         expect(output.string).to include("Invalid board type.")
       end
@@ -103,18 +88,21 @@ module TicTacToeConsole
 
       it "displays the end game message when there is a winner" do
         input = StringIO.new
+        board = BoardHelper.create_initial_board_three('XXX------')
         ui = ConsoleUi.new(input, output)
-        ui.display_end_game_message(TicTacToeCore::Board::X_MARKER)
+        ui.draw(board, 'X')
 
-        expect(output.string).to include("Game Over\n\n" + TicTacToeCore::Board::X_MARKER + " wins!")
+        expect(output.string).to include(ConsoleUi::GAME_OVER_MESSAGE + 'X' + " Wins!")
       end
 
       it "displays the end game message for a draw" do
         input = StringIO.new
         ui = ConsoleUi.new(input, output)
-        ui.display_end_game_message(TicTacToeCore::Board::DRAW)
+        board = BoardHelper.create_initial_board_three('XOXXOXOXO')
+        ui = ConsoleUi.new(input, output)
+        ui.draw(board, 'X')
 
-        expect(output.string).to include("Game Over\n\n" + ConsoleUi::DRAW_MESSAGE)
+        expect(output.string).to include(ConsoleUi::GAME_OVER_MESSAGE + ConsoleUi::TIE_MESSAGE)
       end
     end
   end

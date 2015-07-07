@@ -1,6 +1,7 @@
 module TicTacToeConsole
   module Ui
     class InputGameType
+      GAME_TYPES_PROMPT = "Game Types: \n\n"
       ENTER_GAME_TYPE_PROMPT = "Enter the game type: "
       INVALID_GAME_TYPE_PROMPT = "Invalid game type."
       attr_reader :value, :options
@@ -15,7 +16,11 @@ module TicTacToeConsole
       end
 
       def prompt_message
-        options + "\n" + ENTER_GAME_TYPE_PROMPT
+        message = GAME_TYPES_PROMPT
+        options.each do |key, value|
+          message += key.to_s + " - " + value + "\n"
+        end
+        message + "\n" + ENTER_GAME_TYPE_PROMPT
       end
 
       def invalid_message
@@ -23,7 +28,7 @@ module TicTacToeConsole
       end
 
       def valid?
-        @value
+        @options.has_key?(@value)
       end
 
       private

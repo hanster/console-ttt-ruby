@@ -17,7 +17,7 @@ module TicTacToeConsole
       end
 
       def valid?
-        @value && board.move_available?(@value)
+        @value && board.is_available?(@value)
       end
 
       def prompt_message

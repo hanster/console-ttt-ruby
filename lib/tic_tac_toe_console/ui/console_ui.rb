@@ -83,8 +83,6 @@ module TicTacToeConsole
       def display_status(board, marker)
         if board.finished?
           display_end_game_message(board)
-        else
-          display_next_turn(marker)
         end
       end
 
@@ -95,10 +93,6 @@ module TicTacToeConsole
           message = WINNER_MESSAGE % board.winner
         end
         display_message(GAME_OVER_MESSAGE + message)
-      end
-
-      def display_next_turn(marker)
-
       end
 
       def new_empty_line
